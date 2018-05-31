@@ -6,10 +6,10 @@ Es una aplicación que permite hacer envíos de mails masivos a partir de una pl
 El template tiene ciertos placeholders que la aplicación reemplaza por datos obtenidos del archivo de datos al momento de enviar los mails.
 Las direcciones a las que deben ser enviados los mails se encuentran en el archivo de contactos.
 La aplicación tiene una interface web y otra de línea de comandos.
-Soporte de etiquetas especiales:
-**<date:i>**: debe reemplazarse por la fecha actual en formato inverso: AAAA-MM-DD
-**<date:d>**: debe reemplazarse por la fecha actual en formato: DD-MM-AAAA
-**<empty(pais,argentina)>**: si el placeholder “pais” no está definido en el archivo de datos, entonces utilizar el valor “argentina”
+Soporte de etiquetas especiales:\
+**<date:i>**: debe reemplazarse por la fecha actual en formato inverso: AAAA-MM-DD\
+**<date:d>**: debe reemplazarse por la fecha actual en formato: DD-MM-AAAA\
+**<empty(pais,argentina)>**: si el placeholder “pais” no está definido en el archivo de datos, entonces utilizar el valor “argentina”\
 **<sum(monto1, monto2)>**: debe reemplazarse por la suma de los placesholders monto1 y monto2
 
 ### _Ejemplos_
