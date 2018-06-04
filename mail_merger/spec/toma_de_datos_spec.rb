@@ -36,7 +36,6 @@ describe 'toma_de_datos' do
                   }
                 }'
       creador = Creador.new(json);
-
     end
   end
 
