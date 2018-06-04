@@ -14,8 +14,8 @@ class Creador
 
   def crear_archivo()
 
-    File.open("../body.txt", "w") do |f|
-      f.write(@template)
+    File.open("body.txt", "w") do |f|
+      f.write(@template);
     end
 
   end

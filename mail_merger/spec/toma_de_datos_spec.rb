@@ -45,7 +45,7 @@ describe 'toma_de_datos' do
     end
   end
 
-  describe "tomar json, parsearlo a hash y chequear claves " do
+  describe "tomar json, parsearlo a hash y chequear claves" do
     it 'dar un archivo json y verificar la conversion' do
       json =  '{
                   "template":"Hola <nombre>,\n\r Por medio del presente mail te estamos invitando a <nombre_evento>, que se desarrollará en <lugar_del_evento>, el día <fecha_del_evento>. Por favor confirmar su participación enviando un mail a <mail_de_confirmacion>.\n\rSin otro particular.La direccion",
