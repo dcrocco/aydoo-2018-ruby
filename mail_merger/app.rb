@@ -8,11 +8,9 @@ get "/enviar_mail/:variable" do
   return "Se ha mandado un mail"
 end
 
-post '/' do
-  entrada = JSON.parse request.body.read
-  creador = Creador.new(entrada);
-
-  #puts creador.template;
-  return creador.datos.to_json();
+get '/' do
+  hash_entrada = JSON.parse request.body.read
+  sender = Sender.new();
+  sender.enviar(hash_entrada);
 
 end

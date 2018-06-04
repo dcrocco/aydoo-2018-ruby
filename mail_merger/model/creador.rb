@@ -6,10 +6,18 @@ class Creador
 
   attr_accessor :template, :contactos, :datos
 
-  def initialize(json_de_entrada)
-    @template = json_de_entrada["template"];
-    @contactos = json_de_entrada["contactos"];
-    @datos = json_de_entrada["datos"];
+  def initialize(hash)
+    @template = hash["template"];
+    @contactos = hash["contactos"];
+    @datos = hash["datos"];
+  end
+
+  def crear_archivo()
+
+    File.open("../body.txt", "w") do |f|
+      f.write(@template)
+    end
+
   end
 
 end
