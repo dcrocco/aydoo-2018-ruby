@@ -45,8 +45,8 @@ describe 'toma_de_datos' do
     end
   end
 
-  describe "tomar json" do
-    it 'dar un archivo json y verificar la entrada' do
+  describe "tomar json, parsearlo a hash y chequear claves " do
+    it 'dar un archivo json y verificar la conversion' do
       json =  '{
                   "template":"Hola <nombre>,\n\r Por medio del presente mail te estamos invitando a <nombre_evento>, que se desarrollará en <lugar_del_evento>, el día <fecha_del_evento>. Por favor confirmar su participación enviando un mail a <mail_de_confirmacion>.\n\rSin otro particular.La direccion",
                   "contactos":[
@@ -73,8 +73,9 @@ describe 'toma_de_datos' do
 
       hash_entrada = JSON.parse(json);
       creador = Creador.new(hash_entrada);
-      puts creador.template;
-      #expect(creador.template).to eq "Hola <nombre>, Por medio del presente mail te estamos invitando a <nombre_evento>, que se desarrollará en <lugar_del_evento>, el día <fecha_del_evento>. Por favor confirmar su participación enviando un mail a <mail_de_confirmacion>. Sin otro particular.La direccion";
+      expect(creador.datos["remitente"]).to eq "universidad@untref.com";
+      expect(creador.datos["lugar_evento"]).to eq "el Centro de estudios (avenida Directorio 887, Caseros)";
+      expect(creador.contactos[0]["apellido"]).to eq "perez";
 
     end
   end
