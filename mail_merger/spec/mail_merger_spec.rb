@@ -1,5 +1,6 @@
 require 'rspec'
 require 'rack/test'
+require_relative "../model/creador"
 
 describe 'Aplicacion Sinatra' do
   include Rack::Test::Methods
