@@ -30,4 +30,11 @@ describe ProcesadorDeTemplates do
     expect(template_procesado).to eq 'template <etiquetaInvalida>, probando Valor otra etiqueta'
   end
 
+  it 'El procesador recibe etiqueta sin contenido y no la procesa' do
+    template_original = 'template <>, probando <otra etiqueta>'
+    etiquetas = {"otra etiqueta" => "Valor otra etiqueta"}
+    template_procesado = subject.procesar_template(template_original, etiquetas)
+    expect(template_procesado).to eq 'template <>, probando Valor otra etiqueta'
+  end
+
 end
