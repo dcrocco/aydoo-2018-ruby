@@ -5,9 +5,9 @@ class Datos
 
   def initialize(remitente, asunto, nombre_evento, lugar_evento, fecha_del_evento, mail_de_confirmacion)
     @remitente = remitente
-    @asunto = nombre;
-    @nombre_evento = apellido;
-    @lugar_evento = mail;
+    @asunto = asunto;
+    @nombre_evento = nombre_evento;
+    @lugar_evento = lugar_evento;
     @fecha_del_evento = fecha_del_evento;
     @mail_de_confirmacion = mail_de_confirmacion;
   end

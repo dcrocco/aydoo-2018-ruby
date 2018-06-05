@@ -73,4 +73,10 @@ describe ProcesadorDeTemplates do
     expect(template_procesado).to eq 'suma 5, pais Uruguay, Test, fecha ' + Date.today.to_s
   end
 
+  it "El procsador recibe un template con nombre_evento y lugar_del_evento y lo reemplaza" do
+    template_original = "Hola <nombre>, por medio del presente mail te estamos invitando a <nombre_evento>, que se desarrollará en <lugar_del_evento>."
+    template_procesado = subject.procesar_template(template_original, {"nombre_evento"=>"Casorio untref", "lugar_del_evento"=>"SEDE1", "nombre"=>"Juan"});
+    expect(template_procesado).to eq "Hola Juan, por medio del presente mail te estamos invitando a Casorio untref, que se desarrollará en SEDE1."
+  end
+
 end
