@@ -16,4 +16,11 @@ describe ProcesadorDeTemplates do
     expect(template_procesado).to eq 'template Test'
   end
 
+  it 'El procesador recibe multiples etiquetas y las reemplaza' do
+    template_original = 'template <etiqueta>, probando <otra etiqueta>'
+    etiquetas = {"etiqueta" => "Valor etiqueta", "otra etiqueta" => "Valor otra etiqueta"}
+    template_procesado = subject.procesar_template(template_original, etiquetas)
+    expect(template_procesado).to eq 'template Valor etiqueta, probando Valor otra etiqueta'
+  end
+
 end
