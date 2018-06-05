@@ -11,6 +11,4 @@ describe 'toma_de_datos' do
     Sinatra::Application
   end
 
-
-
 end
