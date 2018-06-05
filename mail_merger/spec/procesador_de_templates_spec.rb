@@ -49,4 +49,28 @@ describe ProcesadorDeTemplates do
     expect(template_procesado).to eq 'template con fecha ' + Date.today.strftime('%d-%m-%Y')
   end
 
+  it 'El procesador recibe un tag con pais sin valor en el template' do
+    template_original = 'template con pais <empty(pais, argentina)>'
+    template_procesado = subject.procesar_template(template_original, {})
+    expect(template_procesado).to eq 'template con pais argentina'
+  end
+
+  it 'El procesador recibe un tag con pais con valor en el template' do
+    template_original = 'template con pais <empty(pais, argentina)>'
+    template_procesado = subject.procesar_template(template_original, {"pais" => "Chile"})
+    expect(template_procesado).to eq 'template con pais Chile'
+  end
+
+  it 'El procesador recibe un tag con una suma de montos' do
+    template_original = 'template con suma de montos <sum(5, 20)>'
+    template_procesado = subject.procesar_template(template_original, {})
+    expect(template_procesado).to eq 'template con suma de montos 25'
+  end
+
+  it 'El procesador recibe un tag con multiples etiquetas especiales y tags adicionales' do
+    template_original = 'suma <sum(3, 2)>, pais <empty(pais, argentina)>, <etiqueta>, fecha <date:i>'
+    template_procesado = subject.procesar_template(template_original, {"pais" => "Uruguay", "etiqueta" => "Test"})
+    expect(template_procesado).to eq 'suma 5, pais Uruguay, Test, fecha ' + Date.today.to_s
+  end
+
 end
