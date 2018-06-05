@@ -1,14 +1,16 @@
 require 'rspec'
 require 'rack/test'
 require 'byebug'
-require_relative "../model/creador_de_archivo"
+
 require "json"
 
-describe 'toma_de_datos' do
+describe 'rutas_spec' do
   include Rack::Test::Methods
 
   def app
     Sinatra::Application
   end
+
+
 
 end

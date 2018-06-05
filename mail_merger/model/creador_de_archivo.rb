@@ -1,6 +1,4 @@
-require_relative "contacto"
-require_relative "template"
-require_relative "datos"
+
 require_relative "procesador_de_templates"
 
 class CreadorDeArchivo
