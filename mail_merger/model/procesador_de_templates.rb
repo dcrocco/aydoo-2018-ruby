@@ -3,7 +3,8 @@ class ProcesadorDeTemplates
 
   def initialize
     @etiquetas_especiales = {
-        "<date:i>" => Date.today.to_s
+        "<date:i>" => Date.today.to_s,
+        "<date:d>" => Date.today.strftime('%d-%m-%Y')
     }
   end
 
@@ -17,6 +18,7 @@ class ProcesadorDeTemplates
     template
   end
 
+  private
   def procesar_etiquetas_especiales(template)
     @etiquetas_especiales.each do |key, value|
       template = template.gsub(key, value)

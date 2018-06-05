@@ -43,4 +43,10 @@ describe ProcesadorDeTemplates do
     expect(template_procesado).to eq 'template con fecha ' + Date.today.to_s
   end
 
+  it 'El procesador recibe un tag de fecha actual y la transforma a DD-MM-AA' do
+    template_original = 'template con fecha <date:d>'
+    template_procesado = subject.procesar_template(template_original, {})
+    expect(template_procesado).to eq 'template con fecha ' + Date.today.strftime('%d-%m-%Y')
+  end
+
 end
