@@ -2,7 +2,7 @@ require_relative "contacto"
 require_relative "template"
 require_relative "datos"
 
-class Creador
+class CreadorDeArchivo
 
   attr_accessor :template, :contactos, :datos
 

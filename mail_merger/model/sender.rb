@@ -1,10 +1,10 @@
 require "mail"
-require_relative "creador"
+require_relative "creador_de_archivo"
 
 class Sender
   def enviar(json_de_entrada)
 
-    creador = Creador.new(json_de_entrada);
+    creador = CreadorDeArchivo.new(json_de_entrada);
     creador.crear_archivo();
 
 
@@ -14,7 +14,7 @@ class Sender
 
     Mail.deliver do
       from     'alan_daniel_envio@gmail.com'
-      to       'alan_daniel_recibo@gmail.com'
+      to       'alan12394@hotmail.com'
       subject  'Despues de ricibir el mail, el archivo body.txt deberia borrarse'
       body     File.read('body.txt')
     end

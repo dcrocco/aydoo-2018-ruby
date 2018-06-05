@@ -1,6 +1,6 @@
 require "sinatra"
 require "json"
-require_relative "model/creador"
+require_relative "model/creador_de_archivo"
 require_relative "model/sender"
 
 get "/enviar_mail/:variable" do
