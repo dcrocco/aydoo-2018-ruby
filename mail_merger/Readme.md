@@ -27,7 +27,10 @@ Por favor confirmar su participación enviando un mail a fiesta@untref.com.
 Sin otro particular.
 La dirección
 
-#Manejo de errores
+### _Entrada de datos_
+Sólo con pasársele un JSON, la aplicación ya podrá mandar los mails
+
+### _Manejo de errores_
 Si la petición ha ido bien se devuelve un status 200, mientras que si hay algún error, se levantará le excepción y se devolverá un mensaje diciendo que hubo un problema
 
 ## Autores
