@@ -16,7 +16,7 @@ class CreadorDeArchivo
   def crear_archivo(numero_de_contacto)
     procesador_de_templates = ProcesadorDeTemplates.new();
     template_procesado = procesador_de_templates.procesar_template(@template, @datos);
-    template_procesado = template_procesado.gsub("<nombre>", @contactos[numero_de_contacto]["nombre"])
+    template_procesado = procesador_de_templates.procesar_template(template_procesado, @contactos[numero_de_contacto])
     File.open("body.txt", "w") do |f|
       f.write(template_procesado);
     end

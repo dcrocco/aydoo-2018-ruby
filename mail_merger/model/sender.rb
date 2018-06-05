@@ -21,7 +21,6 @@ class Sender
       end
 
       File.delete("body.txt") if File.exist?("body.txt");
-
     end
   end
 end
