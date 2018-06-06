@@ -19,7 +19,7 @@ class Sender
 
       Mail.deliver do
         from hash_entrada["datos"]["remitente"]
-        to hash_entrada["contactos"][i]["mail"]
+        to hash_entrada["contactos"][indice]["mail"]
         subject hash_entrada["datos"]["asunto"]
         body body
       end
