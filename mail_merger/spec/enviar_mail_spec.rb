@@ -1,7 +1,7 @@
 require 'rspec'
 require 'rack/test'
 require 'byebug'
-require_relative "../model/creador_de_archivo"
+require_relative "../model/procesador_de_templates"
 require "json"
 
 describe 'toma_de_datos' do

@@ -1,7 +1,7 @@
 require 'rspec'
 require 'rack/test'
 require 'byebug'
-require_relative "../model/creador_de_archivo"
+require_relative "../model/procesador_de_json"
 require "json"
 
 describe 'toma_de_datos' do
@@ -72,10 +72,10 @@ describe 'toma_de_datos' do
                 }'
 
       hash_entrada = JSON.parse(json);
-      creador = CreadorDeArchivo.new(hash_entrada);
-      expect(creador.datos["remitente"]).to eq "universidad@untref.com";
-      expect(creador.datos["lugar_evento"]).to eq "el Centro de estudios (avenida Directorio 887, Caseros)";
-      expect(creador.contactos[0]["apellido"]).to eq "perez";
+      procesador = ProcesadorDeJson.new(hash_entrada);
+      expect(procesador.datos["remitente"]).to eq "universidad@untref.com";
+      expect(procesador.datos["lugar_evento"]).to eq "el Centro de estudios (avenida Directorio 887, Caseros)";
+      expect(procesador.contactos[0]["apellido"]).to eq "perez";
 
     end
   end
