@@ -4,7 +4,7 @@ require 'byebug'
 require_relative "../model/procesador_de_json"
 require "json"
 
-describe 'toma_de_datos' do
+describe ProcesadorDeJson do
   include Rack::Test::Methods
 
   def app
