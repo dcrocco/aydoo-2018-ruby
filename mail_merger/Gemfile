@@ -10,6 +10,7 @@ gem 'rb-readline'
 gem 'sinatra', "1.4.7"
 gem 'sinatra-contrib'
 gem 'byebug'
+gem 'mail'
 
 group :test do
   gem 'rack-test'
