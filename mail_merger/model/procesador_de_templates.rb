@@ -7,7 +7,7 @@ require_relative "procesador_de_sum"
 
 class ProcesadorDeTemplates
 
-  def initialize()
+  def initialize
     @procesadores = [
         ProcesadorDeDatos.new,
         ProcesadorDeFechas.new,
