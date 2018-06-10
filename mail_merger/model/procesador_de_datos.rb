@@ -1,6 +1,5 @@
 require_relative "procesador_de_etiquetas"
 
-
 class ProcesadorDeDatos < ProcesadorDeEtiquetas
 
   def procesar(template, datos)
