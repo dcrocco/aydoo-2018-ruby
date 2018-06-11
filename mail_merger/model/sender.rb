@@ -4,10 +4,6 @@ require 'mail'
 
 class Sender
 
-  def initialize
-    @procesador_de_templates = ProcesadorDeTemplates.new
-  end
-
   def enviar(hash_entrada)
     procesador_de_json = ProcesadorDeJson.new(hash_entrada)
     (0...hash_entrada["contactos"].length).each {|indice|
