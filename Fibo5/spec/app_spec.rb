@@ -9,11 +9,20 @@ describe 'Fibo5' do
     Sinatra::Application
   end
 
-  it 'deberia devolver sucesion de fibo5' do
+  it 'deberia devolver el limite de la sucesion 5' do
     get '/fibonacci/5'
     expect(last_response).to be_ok
     respuesta = JSON.parse(last_response.body)
     expect(respuesta['fibonacci']['limite']).to eq 5
   end
+
+  it 'deberia devolver el limite de la sucesion 5 y una lista con cada valor' do
+    get '/fibonacci/5/lista'
+    expect(last_response).to be_ok
+    respuesta = JSON.parse(last_response.body)
+    expect(respuesta['fibonacci']['limite']).to eq 5
+    expect(respuesta['fibonacci']['lista']).to eq [0, 1, 1, 2, 3]
+  end
+
 
 end
