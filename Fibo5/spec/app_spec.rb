@@ -56,4 +56,12 @@ describe 'Fibo5' do
     expect(respuesta['fibonacci']['lista']).to eq [2, 8, 34]
   end
 
+  it 'deberia devolver el limite de la sucesion 8 y una lista de valores con solo impares' do
+    get '/fibonacci/8/lista?solo=impares'
+    expect(last_response).to be_ok
+    respuesta = JSON.parse(last_response.body)
+    expect(respuesta['fibonacci']['limite']).to eq 8
+    expect(respuesta['fibonacci']['lista']).to eq [1, 1, 3, 5, 13]
+  end
+
 end

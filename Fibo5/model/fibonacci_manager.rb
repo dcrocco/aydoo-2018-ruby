@@ -20,6 +20,10 @@ class FibonacciManager
       inversor = FibonacciPar.new(@lista_sucesion)
       @lista_sucesion = inversor.procesar
     end
+    if @params['solo'].eql? 'impares'
+      inversor = FibonacciImpar.new(@lista_sucesion)
+      @lista_sucesion = inversor.procesar
+    end
     @lista_sucesion
   end
 
