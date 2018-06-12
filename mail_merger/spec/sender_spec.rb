@@ -29,7 +29,7 @@ describe Sender do
     expect {sender.enviar(hash_valido)}.to raise_error(ArgumentError)
   end
 
-  it 'Se intenta en viar un mail con un hash sin remitente' do
+  it 'Se intenta enviar un mail con un hash sin remitente' do
     hash_valido = {
       "template" => "Template Test",
       "datos" => {

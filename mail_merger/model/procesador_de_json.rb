@@ -10,6 +10,8 @@ class ProcesadorDeJson
     @template = hash["template"]
     @contactos = hash["contactos"]
     @datos = hash["datos"]
+
+    #if(@datos[""])
   end
 
   def procesar(indice)
@@ -19,4 +21,3 @@ class ProcesadorDeJson
   end
 
 end
-
