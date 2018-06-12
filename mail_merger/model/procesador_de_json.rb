@@ -6,12 +6,9 @@ class ProcesadorDeJson
     unless ["template", "contactos", "datos"].all? {|s| hash.key? s}
       raise ArgumentError, 'Datos faltantes para procesar'
     end
-
     @template = hash["template"]
     @contactos = hash["contactos"]
     @datos = hash["datos"]
-
-    #if(@datos[""])
   end
 
   def procesar(indice)
