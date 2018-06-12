@@ -13,21 +13,22 @@ get '/fibonacci/:limite' do
   end
 end
 
-get '/fibonacci/:limite/lista' do
-  begin
-    sucesion = params['limite'].to_i
-    fibonacci = Fibonacci.new
-    lista_sucesion = fibonacci.obtener_valores(sucesion)
-    {"fibonacci": { "limite": sucesion, "lista": lista_sucesion }}.to_json
-  end
-end
 
-get '/fibonacci/:limite/sumatoria' do
+get '/fibonacci/:limite/:lista_o_sumatoria' do
   begin
     sucesion = params['limite'].to_i
     fibonacci = Fibonacci.new
+    resultado = {"fibonacci": { "limite": sucesion}}
     lista_sucesion = fibonacci.obtener_valores(sucesion)
-    suma = lista_sucesion.inject(:+)
-    {"fibonacci": { "limite": sucesion, "sumatoria": suma}}.to_json
+    if params['lista_o_sumatoria'].eql? "lista"
+      resultado[:fibonacci]["lista"] = lista_sucesion
+    elsif params['lista_o_sumatoria'].eql? "sumatoria"
+      suma = lista_sucesion.inject(:+)
+      resultado[:fibonacci]["sumatoria"] = suma
+    else
+      status 400
+      resultado = {"error": "Opción no válida"}
+    end
+    resultado.to_json
   end
 end
