@@ -64,4 +64,36 @@ describe 'Fibo5' do
     expect(respuesta['fibonacci']['lista']).to eq [1, 1, 3, 5, 13]
   end
 
+  it 'deberia devolver el limite de la sucesion 8 y una lista de valores con solo impares invertida' do
+    get '/fibonacci/8/lista?sentido=inverso&solo=impares'
+    expect(last_response).to be_ok
+    respuesta = JSON.parse(last_response.body)
+    expect(respuesta['fibonacci']['limite']).to eq 8
+    expect(respuesta['fibonacci']['lista']).to eq [13, 5, 3, 1, 1]
+  end
+
+  it 'deberia devolver el limite de la sucesion 8 y una lista de valores con solo pares invertida' do
+    get '/fibonacci/8/lista?sentido=inverso&solo=pares'
+    expect(last_response).to be_ok
+    respuesta = JSON.parse(last_response.body)
+    expect(respuesta['fibonacci']['limite']).to eq 8
+    expect(respuesta['fibonacci']['lista']).to eq [8, 2]
+  end
+
+  it 'deberia devolver el limite de la sucesion 8 y la suma de valores pares' do
+    get '/fibonacci/8/sumatoria?solo=pares'
+    expect(last_response).to be_ok
+    respuesta = JSON.parse(last_response.body)
+    expect(respuesta['fibonacci']['limite']).to eq 8
+    expect(respuesta['fibonacci']['sumatoria']).to eq 10
+  end
+
+  it 'deberia devolver el limite de la sucesion 8 y la suma de valores impares' do
+    get '/fibonacci/8/sumatoria?solo=impares'
+    expect(last_response).to be_ok
+    respuesta = JSON.parse(last_response.body)
+    expect(respuesta['fibonacci']['limite']).to eq 8
+    expect(respuesta['fibonacci']['sumatoria']).to eq 23
+  end
+
 end
