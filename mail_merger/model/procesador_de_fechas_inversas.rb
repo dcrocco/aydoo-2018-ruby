@@ -1,6 +1,5 @@
-require_relative "procesador_de_etiquetas"
 
-class ProcesadorDeFechasInversas < ProcesadorDeEtiquetas
+class ProcesadorDeFechasInversas
 
   def procesar(template, datos)
     template.gsub("<date:i>", Date.today.to_s)

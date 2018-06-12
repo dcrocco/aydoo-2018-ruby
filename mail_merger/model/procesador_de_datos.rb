@@ -1,6 +1,5 @@
-require_relative "procesador_de_etiquetas"
 
-class ProcesadorDeDatos < ProcesadorDeEtiquetas
+class ProcesadorDeDatos
 
   def procesar(template, datos)
     template.scan(/<.*?>/).each do |value|

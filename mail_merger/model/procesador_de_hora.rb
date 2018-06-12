@@ -1,6 +1,5 @@
-require_relative "procesador_de_etiquetas"
 
-class ProcesadorDeHoras < ProcesadorDeEtiquetas
+class ProcesadorDeHoras
 
   def procesar(template, datos)
     template.gsub("<time>", Time.now.strftime('%H:%M'))

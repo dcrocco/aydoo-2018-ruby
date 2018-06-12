@@ -5,6 +5,10 @@ class ProcesadorDeJson
   attr_accessor :template, :contactos, :datos
 
   def initialize(hash)
+    unless ["template", "contactos", "datos"].all? {|s| hash.key? s}
+      raise ArgumentError, 'Datos faltantes para procesar'
+    end
+
     @template = hash["template"]
     @contactos = hash["contactos"]
     @datos = hash["datos"]

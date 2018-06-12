@@ -1,7 +1,5 @@
-require_relative "procesador_de_etiquetas"
 
-
-class ProcesadorDeSum < ProcesadorDeEtiquetas
+class ProcesadorDeSum
 
   def procesar(template, datos)
     suma_en_template = template.scan(/<sum.*?>/)

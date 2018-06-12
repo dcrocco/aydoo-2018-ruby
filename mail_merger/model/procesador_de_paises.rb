@@ -1,7 +1,5 @@
-require_relative "procesador_de_etiquetas"
 
-
-class ProcesadorDePaises < ProcesadorDeEtiquetas
+class ProcesadorDePaises
 
   def procesar(template, datos)
     pais = datos["pais"] ? datos["pais"] : "argentina"
