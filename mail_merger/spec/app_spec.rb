@@ -12,7 +12,7 @@ describe 'Mail Merger' do
 
   describe '/' do
     it 'Archivo valido deberia devolver ok' do
-      path = File.join(File.dirname(__FILE__), '../data1.json')
+      path = File.join(File.dirname(__FILE__), 'data1.json')
       Sender.any_instance.stub(:enviar)
       post '/', File.read(path)
       expect(last_response).to be_ok
@@ -21,7 +21,7 @@ describe 'Mail Merger' do
 
   describe '/' do
     it 'Archivo invalido deberia devolver error' do
-      path = File.join(File.dirname(__FILE__), '../data2_esquema_incorrecto.json')
+      path = File.join(File.dirname(__FILE__), 'data2_esquema_incorrecto.json')
       Sender.any_instance.stub(:enviar).and_raise(StandardError.new("Error"))
       post '/', File.read(path)
       expect(last_response).not_to be_ok

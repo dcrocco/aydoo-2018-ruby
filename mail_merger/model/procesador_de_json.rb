@@ -2,8 +2,6 @@ require_relative "procesador_de_templates"
 
 class ProcesadorDeJson
 
-  attr_accessor :template, :contactos, :datos
-
   def initialize(hash)
     unless ["template", "contactos", "datos"].all? {|s| hash.key? s}
       raise ArgumentError, 'Datos faltantes para procesar'
