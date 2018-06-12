@@ -1,7 +1,7 @@
 require_relative 'fibonacci_inversor'
 require_relative 'fibonacci_par'
 require_relative 'fibonacci_impar'
-
+require_relative 'errors'
 
 class FibonacciManager
 
@@ -20,16 +20,23 @@ class FibonacciManager
     @lista_sucesion
   end
 
+  private
   def obtener_procesadores
     procesadores = []
-    if @params['sentido'].eql? 'inverso'
-      procesadores.push(FibonacciInversor.new)
+    if @params.key? 'sentido'
+      if @params['sentido'].eql? 'inverso'
+        procesadores.push(FibonacciInversor.new)
+      elsif !@params['sentido'].eql? 'directo'
+        raise ArgumentSentidoError, "Parámetro inválido para argumento 'sentido'"
+      end
     end
     if @params.key? 'solo'
       if @params['solo'].eql? 'pares'
         procesadores.push(FibonacciPar.new)
       elsif @params['solo'].eql? 'impares'
           procesadores.push(FibonacciImpar.new)
+      else
+        raise ArgumentSoloError, "Parámetro inválido para argumento 'solo'"
       end
     end
     procesadores

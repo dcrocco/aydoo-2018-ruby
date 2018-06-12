@@ -20,7 +20,6 @@ get '/fibonacci/:limite/:lista_o_sumatoria' do
     sucesion = params['limite'].to_i
     fibonacci = Fibonacci.new
     resultado = {"fibonacci": { "limite": sucesion}}
-
     lista_sucesion = fibonacci.obtener_valores(sucesion)
     fibo_manager = FibonacciManager.new(lista_sucesion, params)
     resultado_lista_procesada = fibo_manager.procesar
@@ -29,8 +28,12 @@ get '/fibonacci/:limite/:lista_o_sumatoria' do
     elsif params['lista_o_sumatoria'].eql? "sumatoria"
       suma = resultado_lista_procesada.inject(:+)
       resultado[:fibonacci]["sumatoria"] = suma
+    else
+      raise ArgumentError, 'Parámetro inválido'
     end
-
-    resultado.to_json
+    return resultado.to_json
+  rescue
+    return 400, '{"error": "Opción no válida"}'
   end
+
 end

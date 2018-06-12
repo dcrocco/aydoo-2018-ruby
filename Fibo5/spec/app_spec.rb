@@ -96,4 +96,39 @@ describe 'Fibo5' do
     expect(respuesta['fibonacci']['sumatoria']).to eq 23
   end
 
+  it 'deberia devolver error por ruta invalida' do
+    get '/fibonacci/8/rutainvalida'
+    expect(last_response).to be_bad_request
+    respuesta = JSON.parse(last_response.body)
+    expect(respuesta['error']).to eq 'Opción no válida'
+  end
+
+  it 'deberia devolver error por limite 0' do
+    get '/fibonacci/0/lista'
+    expect(last_response).to be_bad_request
+    respuesta = JSON.parse(last_response.body)
+    expect(respuesta['error']).to eq 'Opción no válida'
+  end
+
+  it 'deberia devolver error por limite negativo' do
+    get '/fibonacci/-5/sumatoria'
+    expect(last_response).to be_bad_request
+    respuesta = JSON.parse(last_response.body)
+    expect(respuesta['error']).to eq 'Opción no válida'
+  end
+
+  it 'deberia devolver error por sentido invalido' do
+    get '/fibonacci/15/lista?sentido=invalido'
+    expect(last_response).to be_bad_request
+    respuesta = JSON.parse(last_response.body)
+    expect(respuesta['error']).to eq 'Opción no válida'
+  end
+
+  it 'deberia devolver error por solo invalido' do
+    get '/fibonacci/15/lista?solo=invalido'
+    expect(last_response).to be_bad_request
+    respuesta = JSON.parse(last_response.body)
+    expect(respuesta['error']).to eq 'Opción no válida'
+  end
+
 end
