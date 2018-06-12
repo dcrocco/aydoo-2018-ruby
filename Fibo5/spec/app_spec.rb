@@ -48,4 +48,12 @@ describe 'Fibo5' do
     expect(respuesta['fibonacci']['lista']).to eq [0, 1, 1, 2, 3, 5, 8, 13]
   end
 
+  it 'deberia devolver el limite de la sucesion 10 y una lista de valores con solo pares' do
+    get '/fibonacci/10/lista?solo=pares'
+    expect(last_response).to be_ok
+    respuesta = JSON.parse(last_response.body)
+    expect(respuesta['fibonacci']['limite']).to eq 10
+    expect(respuesta['fibonacci']['lista']).to eq [2, 8, 34]
+  end
+
 end

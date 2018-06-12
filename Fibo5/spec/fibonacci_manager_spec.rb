@@ -8,4 +8,9 @@ describe FibonacciManager do
     expect(manager.procesar).to eq [3, 2, 1, 1, 0]
   end
 
+  it 'Deberia obtener valores pares solamente' do
+    manager = FibonacciManager.new([0, 1, 1, 2, 3, 5, 8], {'solo' => 'pares'})
+    expect(manager.procesar).to eq [2, 8]
+  end
+
 end

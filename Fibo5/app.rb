@@ -24,7 +24,6 @@ get '/fibonacci/:limite/:lista_o_sumatoria' do
     lista_sucesion = fibonacci.obtener_valores(sucesion)
     fibo_manager = FibonacciManager.new(lista_sucesion, params)
     resultado_lista_procesada = fibo_manager.procesar
-
     if params['lista_o_sumatoria'].eql? "lista"
       resultado[:fibonacci]["lista"] = resultado_lista_procesada
     elsif params['lista_o_sumatoria'].eql? "sumatoria"

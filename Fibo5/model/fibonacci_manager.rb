@@ -1,4 +1,5 @@
 require_relative 'fibonacci_inversor'
+require_relative 'fibonacci_par'
 
 
 class FibonacciManager
@@ -13,6 +14,10 @@ class FibonacciManager
   def procesar
     if @params['sentido'].eql? 'inverso'
       inversor = FibonacciInversor.new(@lista_sucesion)
+      @lista_sucesion = inversor.procesar
+    end
+    if @params['solo'].eql? 'pares'
+      inversor = FibonacciPar.new(@lista_sucesion)
       @lista_sucesion = inversor.procesar
     end
     @lista_sucesion
