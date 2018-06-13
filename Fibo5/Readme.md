@@ -22,9 +22,9 @@ Ejemplos de uso:
 >/fibonacci/5/sumatoria
 
 `{ "fibonacci": { "limite": 5, "sumatoria": 7 } }`
->/fibonacci/5?sentido=inverso
+>/fibonacci/5/lista?sentido=inverso
 
 `{ "fibonacci": { "limite": 5, "lista": [3, 2, 1, 1, 0] } }`
->/fibonacci/8?solo=pares
+>/fibonacci/8/lista?solo=pares
 
 `{ "fibonacci": { "limite": 8, "lista": [2, 8] } }`
