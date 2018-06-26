@@ -22,15 +22,7 @@ post '/' do
     rescue ExcepcionServidorSMTPNoLevantado => e
       status 500
       {"resultado" => "Error, el servidor SMTP esta caido"}.to_json
-      #raise Errno::ECONNREFUSED;
     rescue Encoding::CompatibilityError => e
       {"resultado" => "Error CompatibilityError"}.to_json
-
-
-    rescue Errno::ENOENT => e
-      {"resultado" => e.class}.to_json
-    
-
-
     end
 end
