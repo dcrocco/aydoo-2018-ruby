@@ -1,7 +1,7 @@
 require_relative "procesador_de_datos"
 require_relative "procesador_de_fechas"
 require_relative "procesador_de_fechas_inversas"
-require_relative "procesador_de_paises"
+require_relative "procesador_de_marcador"
 require_relative "procesador_de_sum"
 require_relative "procesador_de_hora"
 require_relative "procesador_de_hora_en_formato_doce"
@@ -14,7 +14,7 @@ class ProcesadorDeTemplates
         ProcesadorDeDatos.new,
         ProcesadorDeFechas.new,
         ProcesadorDeFechasInversas.new,
-        ProcesadorDePaises.new,
+        ProcesadorDeMarcador.new,
         ProcesadorDeSum.new,
         ProcesadorDeHoras.new,
         ProcesadorDeHorasEnFormatoDoce.new
