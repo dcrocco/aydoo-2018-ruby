@@ -24,7 +24,7 @@ describe 'Mail Merger' do
     it 'Archivo invalido deberia devolver error' do
       path = File.join(File.dirname(__FILE__), 'data2_esquema_incorrecto.json')
       Sender.any_instance.stub(:enviar).and_raise(StandardError.new("Error"))
-      expect{post '/', File.read(path)}.to raise_error(Encoding::CompatibilityError)
+      expect{post '/', File.read(path)}.to raise_error(StandardError)
     end
   end
 
