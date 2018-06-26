@@ -14,17 +14,16 @@ post '/' do
       status 200
       {"resultado" => "ok"}.to_json
     rescue JSON::ParserError => e
-      #status 500
-      {"resultado" => e.class}.to_json
-    rescue ArgumentError => e
-      puts "Error de tipo => ArgumentError"
+      status 400
+      {"resultado" => "La estructura del JSON pasado es incorrecta"}.to_json
+    rescue ExcepcionJSONIncompleto => e
+      status 400
       {"resultado" => "Error en el JSON pasado"}.to_json
     rescue ExcepcionServidorSMTPNoLevantado => e
-      puts "Error de tipo => Errno::ECONNREFUSED"
+      status 500
       {"resultado" => "Error, el servidor SMTP esta caido"}.to_json
       #raise Errno::ECONNREFUSED;
     rescue Encoding::CompatibilityError => e
-      puts "Error de tipo => Encoding::CompatibilityError"
       {"resultado" => "Error CompatibilityError"}.to_json
     end
 end

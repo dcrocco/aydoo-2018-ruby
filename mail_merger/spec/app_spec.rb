@@ -34,8 +34,6 @@ describe 'Mail Merger' do
       Mail.stub(:deliver)
       post '/', File.read(path)
       expect(last_response.body).to eq '{"resultado":"ok"}'
-
-
     end
   end
 

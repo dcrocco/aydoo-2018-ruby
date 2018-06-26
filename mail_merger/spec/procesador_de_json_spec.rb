@@ -82,7 +82,7 @@ describe ProcesadorDeJson do
           "template":"Template test",
           "datos": {"remitente": "universidad@untref.com"}
       }'
-      expect {ProcesadorDeJson.new(JSON.parse(json))}.to raise_error(ArgumentError)
+      expect {ProcesadorDeJson.new(JSON.parse(json))}.to raise_error(ExcepcionJSONIncompleto)
     end
   end
 

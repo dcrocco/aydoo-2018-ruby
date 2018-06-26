@@ -22,7 +22,7 @@ class Sender
   private
   def validar_valores_mail(from, to, subject, body)
     if from.nil? || to.nil? || subject.nil? || body.nil?
-        raise ArgumentError, 'Datos faltantes para enviar el mail'
+        raise ExcepcionJSONIncompleto, 'Datos faltantes para enviar el mail'
     end
   end
 
@@ -40,7 +40,7 @@ class Sender
         subject subject
         body body
       end
-    rescue Errno::ECONNREFUSED 
+    rescue Errno::ECONNREFUSED
       raise ExcepcionServidorSMTPNoLevantado;
     end
   end

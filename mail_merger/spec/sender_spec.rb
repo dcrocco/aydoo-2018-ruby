@@ -26,7 +26,7 @@ describe Sender do
       }
     }
     sender = Sender.new
-    expect {sender.enviar(hash_no_valido)}.to raise_error(ArgumentError)
+    expect {sender.enviar(hash_no_valido)}.to raise_error(ExcepcionJSONIncompleto)
   end
 
   it 'Se intenta enviar un mail con un hash sin asunto' do
@@ -38,7 +38,7 @@ describe Sender do
       "contactos" => [{"mail" => "contacto@mail.com"}]
     }
     sender = Sender.new
-    expect {sender.enviar(hash_no_valido)}.to raise_error(ArgumentError)
+    expect {sender.enviar(hash_no_valido)}.to raise_error(ExcepcionJSONIncompleto)
   end
 
 end

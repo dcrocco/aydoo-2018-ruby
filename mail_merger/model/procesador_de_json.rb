@@ -1,10 +1,11 @@
 require_relative "procesador_de_templates"
+require_relative "../excepciones/excepcion_JSON_incompleto"
 
 class ProcesadorDeJson
 
   def initialize(hash)
     unless ["template", "contactos", "datos"].all? {|s| hash.key? s}
-      raise ArgumentError, 'Datos faltantes para procesar'
+      raise ExcepcionJSONIncompleto, 'Datos faltantes para procesar'
     end
     @template = hash["template"]
     @contactos = hash["contactos"]
