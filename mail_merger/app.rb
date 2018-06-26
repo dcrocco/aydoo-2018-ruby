@@ -1,6 +1,6 @@
 require "sinatra"
 require "json"
-require_relative "model/sender"
+require_relative "model/enviador_de_mails"
 
 configure do
   set :bind, '0.0.0.0'
@@ -9,7 +9,7 @@ end
 post '/' do
     begin
       hash_entrada = JSON.parse(request.body.read)
-      sender = Sender.new
+      sender = Enviador.new
       sender.enviar(hash_entrada)
       status 200
       {"resultado" => "ok"}.to_json

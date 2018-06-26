@@ -1,7 +1,7 @@
 require 'rspec'
-require_relative '../model/sender'
+require_relative '../model/enviador_de_mails'
 
-describe Sender do
+describe Enviador do
 
   it 'Se intenta en viar un mail con un hash valido' do
     hash_valido = {
@@ -12,7 +12,7 @@ describe Sender do
       },
       "contactos" => [{"mail" => "contacto@mail.com"}]
     }
-    sender = Sender.new
+    sender = Enviador.new
     sender.stub(:enviar_mail){true}
     sender.enviar(hash_valido)
   end
@@ -25,7 +25,7 @@ describe Sender do
         "asunto" => "Asunto del mail"
       }
     }
-    sender = Sender.new
+    sender = Enviador.new
     expect {sender.enviar(hash_no_valido)}.to raise_error(ExcepcionJSONIncompleto)
   end
 
@@ -37,7 +37,7 @@ describe Sender do
       },
       "contactos" => [{"mail" => "contacto@mail.com"}]
     }
-    sender = Sender.new
+    sender = Enviador.new
     expect {sender.enviar(hash_no_valido)}.to raise_error(ExcepcionJSONIncompleto)
   end
 

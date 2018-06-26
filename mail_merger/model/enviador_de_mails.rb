@@ -4,7 +4,7 @@ require_relative "../excepciones/excepcion_smtp_no_levantado"
 require 'mail'
 
 
-class Sender
+class Enviador
 
   def enviar(hash_entrada)
     procesador_de_json = ProcesadorDeJson.new(hash_entrada)
