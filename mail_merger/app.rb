@@ -25,5 +25,12 @@ post '/' do
       #raise Errno::ECONNREFUSED;
     rescue Encoding::CompatibilityError => e
       {"resultado" => "Error CompatibilityError"}.to_json
+
+
+    rescue Errno::ENOENT => e
+      {"resultado" => e.class}.to_json
+    
+
+
     end
 end
