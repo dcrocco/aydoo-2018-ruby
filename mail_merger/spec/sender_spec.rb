@@ -17,8 +17,8 @@ describe Sender do
     sender.enviar(hash_valido)
   end
 
-  it 'Se intenta en viar un mail con un hash sin contactos' do
-    hash_valido = {
+  it 'Se intenta enviar un mail con un hash sin contactos' do
+    hash_no_valido = {
       "template" => "Template Test",
       "datos" => {
         "remitente" => "test@remitente.com",
@@ -26,11 +26,11 @@ describe Sender do
       }
     }
     sender = Sender.new
-    expect {sender.enviar(hash_valido)}.to raise_error(ArgumentError)
+    expect {sender.enviar(hash_no_valido)}.to raise_error(ArgumentError)
   end
 
-  it 'Se intenta enviar un mail con un hash sin remitente' do
-    hash_valido = {
+  it 'Se intenta enviar un mail con un hash sin asunto' do
+    hash_no_valido = {
       "template" => "Template Test",
       "datos" => {
         "remitente" => "test@remitente.com",
@@ -38,7 +38,7 @@ describe Sender do
       "contactos" => [{"mail" => "contacto@mail.com"}]
     }
     sender = Sender.new
-    expect {sender.enviar(hash_valido)}.to raise_error(ArgumentError)
+    expect {sender.enviar(hash_no_valido)}.to raise_error(ArgumentError)
   end
 
 end

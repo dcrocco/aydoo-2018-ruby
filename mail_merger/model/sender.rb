@@ -1,6 +1,8 @@
 require_relative "procesador_de_templates"
 require_relative "procesador_de_json"
+require_relative "../excepciones/excepcion_smtp_no_levantado"
 require 'mail'
+
 
 class Sender
 
@@ -26,16 +28,20 @@ class Sender
 
   private
   def enviar_mail(from, to, subject, body)
+
     validar_valores_mail(from, to, subject, body)
     Mail.defaults do
       delivery_method :smtp, address: "localhost", port: 1025
     end
-
-    Mail.deliver do
-      from from
-      to to
-      subject subject
-      body body
+    begin
+      Mail.deliver do
+        from from
+        to to
+        subject subject
+        body body
+      end
+    rescue Errno::ECONNREFUSED 
+      raise ExcepcionServidorSMTPNoLevantado;
     end
   end
 
