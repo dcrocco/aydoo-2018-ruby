@@ -9,4 +9,10 @@ describe ProcesadorDeFechasInversas do
     expect(template_procesado).to eq 'template con fecha ' + Date.today.to_s
   end
 
+  it 'El procesador recibe un tag parecido al de fecha y no realiza transformacion' do
+    template_original = 'template con fecha <date:o>'
+    template_procesado = ProcesadorDeFechasInversas.new.procesar(template_original, {})
+    expect(template_procesado).to eq 'template con fecha <date:o>'
+  end
+
 end

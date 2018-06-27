@@ -9,4 +9,10 @@ describe ProcesadorDeHorasEnFormatoDoce do
     expect(template_procesado).to eq 'template con fecha ' + Time.now.strftime('%I:%M %p')
   end
 
+  it 'El procesador de horas en formato doce recibe un tag parecido al time y mantiene estructura original' do
+    template_original = 'template con fecha <time:11>'
+    template_procesado = ProcesadorDeHorasEnFormatoDoce.new.procesar(template_original, {})
+    expect(template_procesado).to eq 'template con fecha <time:11>'
+  end
+
 end
