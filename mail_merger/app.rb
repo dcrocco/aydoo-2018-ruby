@@ -8,7 +8,11 @@ end
 
 post '/' do
     begin
-      hash_entrada = JSON.parse(request.body.read)
+      entrada = request.body.read
+      if(entrada == "")
+        raise ExcepcionArchivoNoEncontrado
+      end
+      hash_entrada = JSON.parse(entrada)
       sender = Enviador.new
       sender.enviar(hash_entrada)
       status 200
@@ -23,6 +27,10 @@ post '/' do
       status 500
       {"resultado" => "Error, el servidor SMTP esta caido"}.to_json
     rescue Encoding::CompatibilityError => e
-      {"resultado" => "Error CompatibilityError"}.to_json
+      status 400
+      {"resultado" => "Error de compatibilidad"}.to_json
+    rescue ExcepcionArchivoNoEncontrado
+      status 400
+      {"resultado" => "El archivo no pudo encontrarse"}.to_json
     end
 end

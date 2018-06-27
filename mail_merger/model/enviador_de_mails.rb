@@ -5,7 +5,8 @@ require 'mail'
 
 
 class Enviador
-
+  attr_accessor :template, :contactos, :datos
+  
   def enviar(hash_entrada)
     procesador_de_json = ProcesadorDeJson.new(hash_entrada)
     (0...hash_entrada["contactos"].length).each {|indice|
