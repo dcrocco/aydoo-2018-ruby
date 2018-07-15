@@ -1,0 +1,12 @@
+source 'https://rubygems.org'
+
+ruby '2.2.0'
+
+gem 'rspec'
+gem 'rake'
+gem 'rack-test', "0.6.3"
+gem 'guard'
+gem 'guard-rspec'
+gem 'rb-readline'
+gem 'byebug'
+gem 'sinatra', "1.4.7"
