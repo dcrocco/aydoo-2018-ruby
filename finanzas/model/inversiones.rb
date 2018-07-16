@@ -1,27 +1,46 @@
 require_relative 'inversion_dolares'
+require_relative 'inversion_plazo_fijo_tradicional'
+require_relative 'calculador_de_impuesto'
 
 class Inversiones
 
-    def self.obtener_inversiones(args)
-      inversiones = []
+    def initialize(args)
       args = args[0].split(' ')
-      individuo_inversion = args[0]
-      args[1..args.length].each do |arg|
+      @persona = args[0]
+      @inversiones = obtener_inversiones(args[1..args.length])
+    end
+
+    def calcular_ganancia
+      ganancia = 0
+      @inversiones.each do |inversion|
+        ganancia += inversion.calcular_ganancia
+      end
+      ganancia
+    end
+
+    def calcular_impuesto
+      CalculadorDeImpuesto.calcular_impuesto(@persona, calcular_ganancia)
+    end
+
+    private
+    def obtener_inversiones(args)
+      inversiones = []
+      args.each do |arg|
         parametros_inversiones = arg.split(',', 2)
-        inversion = obtener_inversion(parametros_inversiones[0], individuo_inversion, parametros_inversiones[1])
+        inversion = obtener_inversion(parametros_inversiones[0], parametros_inversiones[1])
         inversiones.push(inversion)
       end
-      inversiones
+      @inversiones = inversiones
     end
 
-    def self.obtener_inversion(tipo, individuo_inversion, args)
+    private
+    def obtener_inversion(tipo, valores)
       if tipo == 'dol'
-        InversionDolares.new(individuo_inversion, args)
+        return InversionDolares.new(valores)
       end
-    end
-
-    def obtener_inversion_dolares(individuo_inversion, valores)
-      InversionDolares.new(individuo_inversion, valores)
+      else if tipo == 'pft'
+        return InversionPlazoFijoTradicional.new(valores)
+      end
     end
 
 end
