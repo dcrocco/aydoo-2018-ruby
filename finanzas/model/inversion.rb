@@ -1,5 +1,0 @@
-class Inversion
-
-
-
-end

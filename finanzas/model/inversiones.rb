@@ -35,11 +35,11 @@ class Inversiones
 
     private
     def obtener_inversion(tipo, valores)
+      valores = valores.split(',')
       if tipo == 'dol'
-        return InversionDolares.new(valores)
-      end
-      else if tipo == 'pft'
-        return InversionPlazoFijoTradicional.new(valores)
+        InversionDolares.new(valores[0].to_f, valores[1].to_f, valores[2].to_f)
+      elsif tipo == 'pft'
+        return InversionPlazoFijoTradicional.new(valores[0].to_f, valores[1].to_f, valores[2].to_f)
       end
     end
 

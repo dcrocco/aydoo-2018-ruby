@@ -1,10 +1,13 @@
 class InversionPlazoFijoTradicional
 
-  def initialize(valores)
+  def initialize(plazo, interes, monto)
+    @plazo = plazo
+    @interes = interes
+    @monto = monto
   end
 
   def calcular_ganancia
-    24658
+    ((@plazo / 365) * (@interes / 100) * @monto).round(2)
   end
 
 end

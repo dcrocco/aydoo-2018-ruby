@@ -1,11 +1,12 @@
 class CalculadorDeImpuesto
 
+  CALCULO_IMPUESTOS = {
+      'ind' => lambda{|valor| calcular_impuesto_individuo(valor)},
+      'emp' => lambda{|valor| calcular_impuesto_empresa(valor)}
+  }
+
   def self.calcular_impuesto(persona, valor)
-    if persona == 'ind'
-      calcular_impuesto_individuo(valor)
-    elsif persona == 'emp'
-      calcular_impuesto_empresa(valor)
-    end
+    CALCULO_IMPUESTOS[persona].(valor)
   end
 
   def self.calcular_impuesto_individuo(valor)
@@ -17,7 +18,7 @@ class CalculadorDeImpuesto
     elsif valor >= 500000
       impuesto = valor * 0.1
     end
-    impuesto
+    impuesto.round(2)
   end
 
   def self.calcular_impuesto_empresa(valor)
@@ -31,7 +32,7 @@ class CalculadorDeImpuesto
     elsif valor >= 500000
       impuesto = valor * 0.2
     end
-    impuesto
+    impuesto.round(2)
   end
 
   private_class_method :calcular_impuesto_empresa, :calcular_impuesto_individuo
