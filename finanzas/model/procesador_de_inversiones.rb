@@ -2,7 +2,8 @@ require_relative 'inversion_dolares'
 require_relative 'inversion_plazo_fijo_tradicional'
 require_relative 'calculador_de_impuesto'
 
-class Inversiones
+
+class ProcesadorDeInversiones
 
     def initialize(args)
       args = args[0].split(' ')
