@@ -1,14 +1,21 @@
 require_relative 'inversion_dolares'
 require_relative 'inversion_plazo_fijo_tradicional'
-require_relative 'calculador_de_impuesto'
+require_relative 'generador_de_inversiones'
+require_relative 'impuesto_empresa'
+require_relative 'impuesto_individuo'
 
 
 class ProcesadorDeInversiones
 
+    IMPUESTOS = {
+      'ind' => ImpuestoIndividuo,
+      'emp' => ImpuestoEmpresa
+    }
+
     def initialize(args)
       args = args[0].split(' ')
-      @persona = args[0]
-      @inversiones = obtener_inversiones(args[1..args.length])
+      @impuesto = IMPUESTOS[args[0]]
+      @inversiones = GeneradorDeInversiones.obtener_inversiones(args[1..args.length])
     end
 
     def calcular_ganancia
@@ -20,28 +27,7 @@ class ProcesadorDeInversiones
     end
 
     def calcular_impuesto
-      CalculadorDeImpuesto.calcular_impuesto(@persona, calcular_ganancia)
-    end
-
-    private
-    def obtener_inversiones(args)
-      inversiones = []
-      args.each do |arg|
-        parametros_inversiones = arg.split(',', 2)
-        inversion = obtener_inversion(parametros_inversiones[0], parametros_inversiones[1])
-        inversiones.push(inversion)
-      end
-      @inversiones = inversiones
-    end
-
-    private
-    def obtener_inversion(tipo, valores)
-      valores = valores.split(',')
-      if tipo == 'dol'
-        InversionDolares.new(valores[0].to_f, valores[1].to_f, valores[2].to_f)
-      elsif tipo == 'pft'
-        return InversionPlazoFijoTradicional.new(valores[0].to_f, valores[1].to_f, valores[2].to_f)
-      end
+      @impuesto.calcular_impuesto(calcular_ganancia)
     end
 
 end
