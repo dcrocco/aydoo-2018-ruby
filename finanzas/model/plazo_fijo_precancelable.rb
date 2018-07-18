@@ -1,11 +1,10 @@
-
-class PlazoFijoPrecancelable
+class PlazoFijoPrecancelable < Inversion
 
   def initialize(plazo_inicial, plazo_real, interes, monto)
+    super(monto)
     @plazo_inicial = plazo_inicial
     @plazo_real = plazo_real
     @interes= interes
-    @monto = monto
   end
 
   def calcular_ganancia

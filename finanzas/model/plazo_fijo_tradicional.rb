@@ -1,9 +1,9 @@
-class PlazoFijoTradicional
+class PlazoFijoTradicional < Inversion
 
   def initialize(plazo, interes, monto)
+    super(monto)
     @plazo = plazo
     @interes = interes
-    @monto = monto
   end
 
   def calcular_ganancia

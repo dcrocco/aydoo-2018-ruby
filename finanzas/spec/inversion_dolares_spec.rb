@@ -15,4 +15,16 @@ describe 'InversionDolares' do
     expect(inversion.calcular_ganancia).to eq 8000.0
   end
 
+  it 'Inversion dolares con cotizacion incial negativa deberia devolver excepcion' do
+    expect{InversionDolares.new(20000.0, -20.0, 28.0)}.to raise_error InversionDolares::CotizacionesInvalidasError
+  end
+
+  it 'Inversion dolares con cotizacion final negativa deberia devolver excepcion' do
+    expect{InversionDolares.new(20000.0, 20.0, -28.0)}.to raise_error InversionDolares::CotizacionesInvalidasError
+  end
+
+  it 'Inversion dolares con cotizacion inicial nula deberia devolver excepcion' do
+    expect{InversionDolares.new(20000.0, 0.0, -28.0)}.to raise_error InversionDolares::CotizacionesInvalidasError
+  end
+
 end
