@@ -48,7 +48,6 @@ class CalculadorDeInversiones
       unless CALCULADORES_DE_IMPUESTOS.has_key? args[0]
         raise CalculadorDeImpuestoInvalidoError
       end
-
     end
 
 end

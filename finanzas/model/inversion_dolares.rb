@@ -1,3 +1,5 @@
+require_relative 'inversion'
+
 class InversionDolares < Inversion
 
   class CotizacionesInvalidasError < StandardError

@@ -9,15 +9,9 @@ class GeneradorDeInversiones
     end
 
     INVERSIONES = {
-      'dol' => lambda{|args| InversionDolares.new(args[0].to_f, args[1].to_f, args[2].to_f)},
-      'pft' => lambda{|args| PlazoFijoTradicional.new(args[0].to_f, args[1].to_f, args[2].to_f)},
-      'pfp' => lambda{|args| PlazoFijoPrecancelable.new(args[0].to_f, args[1].to_f, args[2].to_f, args[3].to_f)},
-    }
-
-    INVERSIONES = {
-      'dol' => lambda{|args| InversionDolares.new(args[0].to_f, args[1].to_f, args[2].to_f)},
-      'pft' => lambda{|args| PlazoFijoTradicional.new(args[0].to_f, args[1].to_f, args[2].to_f)},
-      'pfp' => lambda{|args| PlazoFijoPrecancelable.new(args[0].to_f, args[1].to_f, args[2].to_f, args[3].to_f)},
+      'dol' => lambda{|args| crear_inversion(3, InversionDolares, args)},
+      'pft' => lambda{|args| crear_inversion(3, PlazoFijoTradicional, args)},
+      'pfp' => lambda{|args| crear_inversion(4, PlazoFijoPrecancelable, args)},
     }
 
     def self.obtener_inversiones(args)
@@ -40,4 +34,13 @@ class GeneradorDeInversiones
       end
     end
 
+    def self.crear_inversion(cantidad_de_parametros, clase_inversion, args)
+      if args.length != cantidad_de_parametros
+        raise ArgumentError.new('La cantidad de parametros para crear la inversion es invalida')
+      end
+      args = args.map{|arg| arg.to_f}
+      clase_inversion.new(*args)
+    end
+
+    private_class_method :crear_inversion, :validar_entrada
 end
