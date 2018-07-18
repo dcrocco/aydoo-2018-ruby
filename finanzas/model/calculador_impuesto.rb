@@ -1,12 +1,10 @@
 class CalculadorImpuesto
 
-  class ValorImpuestoError < StandardError
-  end
-
   def self.calcular_impuesto(valor)
     if valor < 0
-      raise ValorImpuestoError
+      valor = 0
     end
+    valor
   end
 
 end

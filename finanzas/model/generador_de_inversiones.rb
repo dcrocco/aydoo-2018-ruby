@@ -36,7 +36,10 @@ class GeneradorDeInversiones
 
     def self.crear_inversion(cantidad_de_parametros, clase_inversion, args)
       if args.length != cantidad_de_parametros
-        raise ArgumentError.new('La cantidad de parametros para crear la inversion es invalida')
+        raise ArgumentError.new('La cantidad de parametros para crear la inversion es invalida.')
+      end
+      if args.all? {|arg| !true if Float(arg) rescue false }
+        raise ArgumentError.new('El tipo de dato para crear la inversion es invalido.')
       end
       args = args.map{|arg| arg.to_f}
       clase_inversion.new(*args)
