@@ -1,11 +1,14 @@
 require_relative 'inversion_dolares'
-require_relative 'inversion_plazo_fijo_tradicional'
+require_relative 'plazo_fijo_tradicional'
+require_relative 'plazo_fijo_precancelable'
+
 
 class GeneradorDeInversiones
 
     INVERSIONES = {
       'dol' => lambda{|args| InversionDolares.new(args[0].to_f, args[1].to_f, args[2].to_f)},
-      'pft' => lambda{|args| InversionPlazoFijoTradicional.new(args[0].to_f, args[1].to_f, args[2].to_f)}
+      'pft' => lambda{|args| PlazoFijoTradicional.new(args[0].to_f, args[1].to_f, args[2].to_f)},
+      'pfp' => lambda{|args| PlazoFijoPrecancelable.new(args[0].to_f, args[1].to_f, args[2].to_f, args[3].to_f)},
     }
 
     def self.obtener_inversiones(args)

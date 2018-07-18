@@ -1,4 +1,4 @@
-class InversionPlazoFijoTradicional
+class PlazoFijoTradicional
 
   def initialize(plazo, interes, monto)
     @plazo = plazo

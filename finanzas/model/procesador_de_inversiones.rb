@@ -1,5 +1,5 @@
 require_relative 'inversion_dolares'
-require_relative 'inversion_plazo_fijo_tradicional'
+require_relative 'plazo_fijo_tradicional'
 require_relative 'generador_de_inversiones'
 require_relative 'impuesto_empresa'
 require_relative 'impuesto_individuo'
