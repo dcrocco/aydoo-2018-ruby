@@ -1,4 +1,4 @@
-class ImpuestoEmpresa
+class CalculadorImpuestoEmpresa
 
   def self.calcular_impuesto(valor)
     impuesto = 0

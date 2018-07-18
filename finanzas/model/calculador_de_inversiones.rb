@@ -1,20 +1,20 @@
 require_relative 'inversion_dolares'
 require_relative 'plazo_fijo_tradicional'
 require_relative 'generador_de_inversiones'
-require_relative 'impuesto_empresa'
-require_relative 'impuesto_individuo'
+require_relative 'calculador_impuesto_empresa'
+require_relative 'calculador_impuesto_individuo'
 
 
-class ProcesadorDeInversiones
+class CalculadorDeInversiones
 
-    IMPUESTOS = {
-      'ind' => ImpuestoIndividuo,
-      'emp' => ImpuestoEmpresa
+    CALCULADORES_DE_IMPUESTOS = {
+      'ind' => CalculadorImpuestoIndividuo,
+      'emp' => CalculadorImpuestoEmpresa
     }
 
     def initialize(args)
       args = args[0].split(' ')
-      @impuesto = IMPUESTOS[args[0]]
+      @impuesto = CALCULADORES_DE_IMPUESTOS[args[0]]
       @inversiones = GeneradorDeInversiones.obtener_inversiones(args[1..args.length])
     end
 
