@@ -1,13 +1,24 @@
 class PlazoFijoTradicional < Inversion
 
-  def initialize(plazo, interes, monto)
+  class PlazoInvalidoError < StandardError
+  end
+  class InteresInvalidoError < StandardError
+  end
+
+  def initialize(monto, plazo_inicial, interes)
     super(monto)
-    @plazo = plazo
+    if plazo_inicial <= 0
+      raise PlazoInvalidoError
+    end
+    if interes <= 0
+      raise InteresInvalidoError
+    end
+    @plazo_inicial = plazo_inicial
     @interes = interes
   end
 
   def calcular_ganancia
-    ((@plazo / 365) * (@interes / 100) * @monto).round(2)
+    ((@plazo_inicial / 365) * (@interes / 100) * @monto).round(2)
   end
 
 end

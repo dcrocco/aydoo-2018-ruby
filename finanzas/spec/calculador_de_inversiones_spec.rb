@@ -12,14 +12,6 @@ describe 'CalculadorDeInversiones' do
     expect(valores_inversion[:ganancia]).to eq 400
     expect(valores_inversion[:impuesto]).to eq 0
   end
-  #
-  # it 'Inversion de un individuo en dolares de monto 1000 y cotizaciones 20 inicial y 28 final
-  #   deberia tener ganancia 1400' do
-  #   inversiones = CalculadorDeInversiones.new(%w(ind dol,1000))
-  #   valores_inversion = inversiones.calcular_valores_inversion
-  #   expect(valores_inversion[:ganancia]).to eq 400
-  #   expect(valores_inversion[:impuesto]).to eq 0
-  # end
 
   it 'Inversion de una empresa en plazo fijo tradicional de monto 250.000, plazo 90 e interes del 40%
     deberia tener ganancia de 24.658 e impuesto de 1232,90' do
@@ -55,9 +47,5 @@ describe 'CalculadorDeInversiones' do
   it 'Individuo inexistente deberia devolver una excepcion' do
     expect{CalculadorDeInversiones.new(%w(gob dol))}.to raise_error CalculadorDeInversiones::CalculadorDeImpuestoInvalidoError
   end
-
-  # it 'Valor negativo en la inversion deberia devolver una excepcion' do
-  #   expect{CalculadorDeInversiones.new(%w(gob dol,-10,18,27))}.to raise_error CalculadorDeInversiones::CalculadorDeImpuestoInvalidoError
-  # end
 
 end

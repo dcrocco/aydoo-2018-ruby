@@ -9,4 +9,8 @@ describe 'PlazoFijoPrecancelable' do
     expect(inversion.calcular_ganancia).to eq 20000.0
   end
 
+  it 'Inversion en plazo fijo precancelable con plazo real mayor al inicial deberia lanzar error' do
+    expect{PlazoFijoPrecancelable.new(365.0, 400.0, 40.0, 100000.0)}.to raise_error PlazoFijoPrecancelable::PlazoInvalidoError
+  end
+
 end

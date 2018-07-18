@@ -9,4 +9,12 @@ describe 'PlazoFijoTradicional' do
     expect(inversion.calcular_ganancia).to eq 24657.53
   end
 
+  it 'Inversion en plazo fijo tradicional con plazo inicial negativo deberia lanzar error' do
+    expect{PlazoFijoTradicional.new(365.0, -1.0, 40.00)}.to raise_error PlazoFijoTradicional::PlazoInvalidoError
+  end
+
+  it 'Inversion en plazo fijo tradicional con monto negativo deberia lanzar error' do
+    expect{PlazoFijoTradicional.new(365.0, 1.0, -40.00)}.to raise_error PlazoFijoTradicional::InteresInvalidoError
+  end
+
 end

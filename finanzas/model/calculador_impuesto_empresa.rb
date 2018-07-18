@@ -1,6 +1,9 @@
-class CalculadorImpuestoEmpresa
+require_relative 'calculador_impuesto'
+
+class CalculadorImpuestoEmpresa < CalculadorImpuesto
 
   def self.calcular_impuesto(valor)
+    super(valor)
     impuesto = 0
     if valor.between?(20000, 50000)
       impuesto = valor * 0.05
